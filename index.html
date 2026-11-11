@@ -1047,6 +1047,94 @@ a {
   font-size: 0.88rem;
 }
 
+.lead {
+  display: grid;
+  gap: 18px;
+  padding: clamp(22px, 4vw, 34px);
+  border-radius: 24px;
+  background: var(--white);
+  box-shadow: 0 30px 70px -45px rgb(10 87 194 / 0.55);
+}
+
+.lead-field {
+  display: grid;
+  gap: 7px;
+}
+
+.lead-field label {
+  font-family: var(--display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.lead-field label span {
+  font-family: var(--body);
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
+.lead-field input,
+.lead-field select {
+  width: 100%;
+  min-height: 52px;
+  padding: 0 15px;
+  border: 1.5px solid var(--line);
+  border-radius: 14px;
+  background: var(--white);
+  font-family: var(--body);
+  font-size: 1rem;
+  color: var(--ink);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lead-field select {
+  appearance: none;
+  padding-right: 42px;
+  background-image: linear-gradient(45deg, transparent 50%, var(--brand) 50%), linear-gradient(135deg, var(--brand) 50%, transparent 50%);
+  background-position: calc(100% - 22px) 23px, calc(100% - 16px) 23px;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+
+.lead-field input:focus,
+.lead-field select:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 4px rgb(10 87 194 / 0.12);
+  outline: none;
+}
+
+.lead-field input[aria-invalid="true"] {
+  border-color: #c2410c;
+}
+
+.lead-send {
+  display: grid;
+  gap: 12px;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.lead-send .btn {
+  justify-self: start;
+}
+
+.lead-note,
+.lead-alt {
+  font-size: 0.93rem;
+  color: var(--ink-soft);
+}
+
+.lead-alt {
+  margin-top: 18px;
+}
+
+.lead-alt a {
+  color: var(--brand-ink);
+  font-weight: 600;
+}
+
 .fab-stack {
   position: fixed;
   right: max(16px, env(safe-area-inset-right));
@@ -1319,6 +1407,21 @@ body.menu-open .fab-stack {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .lead {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 24px;
+  }
+
+  .lead-send {
+    grid-column: 1 / -1;
+    grid-template-columns: auto 1fr;
+    gap: 18px;
+  }
+
+  .lead-note {
+    max-width: 26rem;
+  }
+
   .footer-inner {
     grid-template-columns: 1.6fr 1fr 1fr;
     gap: 48px;
@@ -1483,6 +1586,7 @@ body.menu-open .fab-stack {
       <a href="#como-funciona">Cómo funciona</a>
       <a href="#zonas">Zonas y horario</a>
       <a href="#preguntas">Preguntas</a>
+      <a href="#escribenos" data-needs-wa hidden>Escríbenos</a>
     </nav>
     <div class="header-actions">
       <a class="btn btn--primary btn--small" href="#servicios" data-book>Reservar</a>
@@ -1504,7 +1608,11 @@ body.menu-open .fab-stack {
         </h1>
         <p class="hero-lead">Limpieza residencial en Miami hecha con amor, dedicación y honradez. Elige tu servicio, el día y la hora, y deja tu casa en nuestras manos.</p>
         <div class="hero-actions">
-          <a class="btn btn--primary" href="#servicios" data-book>
+          <a class="btn btn--primary" href="#escribenos" data-needs-wa hidden>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3 .78.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.25-.12-1.45-.72-1.68-.8-.22-.08-.39-.12-.55.12-.16.25-.63.8-.77.96-.14.16-.28.18-.53.06a6.7 6.7 0 0 1-1.98-1.22 7.4 7.4 0 0 1-1.37-1.7c-.14-.25 0-.38.11-.5.11-.11.25-.28.37-.42.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42h-.47a.9.9 0 0 0-.65.3 2.7 2.7 0 0 0-.85 2c0 1.2.87 2.35.99 2.51.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.45-.59 1.65-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.47-.28z"/></svg>
+            Escríbenos
+          </a>
+          <a class="btn btn--primary" href="#servicios" data-book data-demote-on-wa>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
             Agenda tu limpieza
           </a>
@@ -1731,6 +1839,54 @@ body.menu-open .fab-stack {
     </div>
   </section>
 
+  <section class="section section--canvas" id="escribenos" data-needs-wa hidden>
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Escríbenos y nosotros lo agendamos</h2>
+        <p>Cuéntanos lo básico y te respondemos por WhatsApp con la fecha y el precio exacto para tu casa.</p>
+      </div>
+      <form class="lead" id="leadForm" novalidate>
+        <p class="lead-field">
+          <label for="leadNombre">Tu nombre</label>
+          <input id="leadNombre" name="nombre" type="text" autocomplete="name" required>
+        </p>
+        <p class="lead-field">
+          <label for="leadServicio">¿Qué necesitas?</label>
+          <select id="leadServicio" name="servicio">
+            <option>Limpieza semanal o quincenal</option>
+            <option>Limpieza profunda</option>
+            <option>Limpieza de mudanza</option>
+            <option>Organización general</option>
+            <option>No estoy seguro, oriéntame</option>
+          </select>
+        </p>
+        <p class="lead-field">
+          <label for="leadZona">¿En qué zona?</label>
+          <select id="leadZona" name="zona">
+            <option>Brickell</option>
+            <option>Miami Beach</option>
+            <option>Coral Gables</option>
+            <option>South Beach</option>
+            <option>Doral</option>
+            <option>Otra zona de Miami</option>
+          </select>
+        </p>
+        <p class="lead-field">
+          <label for="leadCuando">¿Cuándo te queda bien? <span>Opcional</span></label>
+          <input id="leadCuando" name="cuando" type="text" placeholder="Por ejemplo: jueves en la mañana">
+        </p>
+        <div class="lead-send">
+          <button class="btn btn--primary" type="submit">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3 .78.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.25-.12-1.45-.72-1.68-.8-.22-.08-.39-.12-.55.12-.16.25-.63.8-.77.96-.14.16-.28.18-.53.06a6.7 6.7 0 0 1-1.98-1.22 7.4 7.4 0 0 1-1.37-1.7c-.14-.25 0-.38.11-.5.11-.11.25-.28.37-.42.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42h-.47a.9.9 0 0 0-.65.3 2.7 2.7 0 0 0-.85 2c0 1.2.87 2.35.99 2.51.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.45-.59 1.65-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.47-.28z"/></svg>
+            Enviar por WhatsApp
+          </button>
+          <p class="lead-note">Se abre tu WhatsApp con el mensaje ya escrito. Nada se envía hasta que lo revises y le des enviar.</p>
+        </div>
+      </form>
+      <p class="lead-alt">¿Prefieres resolverlo tú mismo? <a href="#servicios" data-book>Agenda en línea</a>, a cualquier hora.</p>
+    </div>
+  </section>
+
   <section class="section" id="preguntas">
     <div class="wrap">
       <div class="section-head">
@@ -1777,11 +1933,12 @@ body.menu-open .fab-stack {
     <div class="decor" aria-hidden="true" data-sparkles="18,4,16|72,94,20|24,60,10|80,40,12"></div>
     <div class="wrap cta-inner">
       <div>
-        <h2>Tu casa limpia empieza con una reserva</h2>
-        <p>Escoge el servicio y el horario que te convenga. Toma un par de minutos.</p>
+        <h2>Tu casa limpia empieza con un mensaje</h2>
+        <p>Escríbenos y nosotros nos encargamos, o escoge tú mismo el día y la hora.</p>
       </div>
       <div class="cta-actions">
-        <a class="btn btn--light" href="#servicios" data-book>Agenda tu limpieza</a>
+        <a class="btn btn--light" href="#escribenos" data-needs-wa hidden>Escríbenos</a>
+        <a class="btn btn--light" href="#servicios" data-book data-demote-on-wa-light>Agenda tu limpieza</a>
         <a class="btn btn--outline-light" href="#contacto" data-contact="tel" hidden>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
           Llamar
@@ -1889,6 +2046,35 @@ body.menu-open .fab-stack {
       el.hidden = false;
     });
   }
+
+  const leadForm = document.getElementById("leadForm");
+
+  if (CONFIG.whatsapp) {
+    $$("[data-needs-wa]").forEach((el) => {
+      el.hidden = false;
+    });
+    $$("[data-demote-on-wa]").forEach((el) => el.classList.replace("btn--primary", "btn--ghost"));
+    $$("[data-demote-on-wa-light]").forEach((el) => el.classList.replace("btn--light", "btn--outline-light"));
+  }
+
+  leadForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const nombre = leadForm.nombre.value.trim();
+    leadForm.nombre.setAttribute("aria-invalid", String(!nombre));
+    if (!nombre) {
+      leadForm.nombre.focus();
+      return;
+    }
+    const cuando = leadForm.cuando.value.trim();
+    const lineas = [
+      `Hola, FerJazz. Soy ${nombre}.`,
+      `Me interesa: ${leadForm.servicio.value}.`,
+      `Zona: ${leadForm.zona.value}.`,
+    ];
+    if (cuando) lineas.push(`Me queda bien: ${cuando}.`);
+    lineas.push("¿Me pueden dar fecha y precio?");
+    window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(lineas.join("\n"))}`, "_blank", "noopener");
+  });
 
   $$(".decor").forEach((layer) => {
     const sparkles = (layer.dataset.sparkles || "").split("|").filter(Boolean);
