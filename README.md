@@ -17,6 +17,10 @@ Todo lo que cambia está en el objeto `CONFIG`, al final de `index.html`:
 
 Las secciones `#resultados` (antes y después) y `#resenas` están ocultas con el atributo `hidden` hasta tener fotos y reseñas reales.
 
+## Dominio
+
+La dirección del sitio aparece en cuatro lugares de `index.html`: `link rel="canonical"`, `og:url`, `og:image` y el campo `url` del bloque de datos estructurados. Al comprar el dominio hay que cambiarla en los cuatro.
+
 ## Publicación
 
 Sitio estático en Vercel. Cada push a `main` se publica solo.
